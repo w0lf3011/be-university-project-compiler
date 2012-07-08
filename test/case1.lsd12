@@ -1,0 +1,101 @@
+program LSD12; 
+{ Case 1 : où sont géré :
+	- if
+	- while }
+function main(): void; { TJ VOID }
+	var 
+		num1 int;
+		num2 int;
+		
+		addition int;
+		soustration int;
+		multiplication int;
+		division int;
+		
+		testRead int;
+		testWrite int;
+		
+		bool1 bool;
+		bool2 bool;
+		
+		resultWhile int;
+		counter int;
+
+	begin
+
+		num1 := 1;
+		num2 := 2;
+		
+		addition := num1 + num2;
+		soustration := addition - num1;
+		multiplication := addition * num2;
+		division := multiplication / num2;
+		
+		read testRead;
+		
+		testWrite := num1 + num2;
+		
+		write testWrite;
+		
+		bool1 := true;
+		bool2 := false;
+
+		resultWhile := 2;
+		counter := 0;
+		
+		{ Test While : 2 * 2 * 2 * 2 * 2 * 2 * 2 = 128 }
+		while (counter = 6) do
+			resultWhile := resultWhile * num2;
+			counter := counter + num1;
+		od;
+
+		{ Test if : tous les integers = 0 }
+		if (bool1) then
+			addition := 0;
+			soustration := 0;
+			multiplication := 0;
+			division := 0;
+			
+			testRead := 0;
+			testWrite := 0;
+			
+			bool1 := false;
+			bool2 := true;
+			
+			{ Test else : tous les integers = 1 }
+		else
+			addition := 1;
+			soustration := 1;
+			multiplication := 1;
+			division := 1;
+			
+			testRead := 1;
+			testWrite := 1;
+			
+			bool1 := true;
+			bool2 := false;
+		fi;
+		
+		{ Test pour afficher tous les résultats }
+		write resultWhile;
+		
+		write addition;
+		write soustration;
+		write multiplication;
+		write division;
+
+		if (bool1) then
+			write 1;
+		else
+			write 0;
+		fi;
+		
+		if (bool2) then
+			write 1;
+		else
+			write 0;
+		fi;
+		
+	end;
+
+end;

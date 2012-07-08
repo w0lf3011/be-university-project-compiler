@@ -1,0 +1,94 @@
+program LSD12; 
+{ Case 6 : où sont géré :
+	- ensembles avec les instructions et opérations simples
+	- ajout d'un élément,
+	- retrait d'un élément,
+	- min,
+	- max,
+	- nombre d'éléments,
+	- test de la présence d'un élément dans un ensemble }
+function main():void;
+	var
+		{ declaration de variables+fonctions }
+		a bool;
+		b int;
+		ensA iset;
+		ensB iset;
+
+		{ Vérifie que ensA e t ensB sont identiques }
+		function equals():bool ;
+			forward ;
+
+		{ Initilise ensA avec des valeurs saisies par l’utilisateur }
+		function buildEnsA():void;
+		var
+			x int ;
+		begin
+			read x ;
+			while(!(x=0)) do
+				add x to ensA;
+				read x;
+			od;
+		end;
+		
+		{ Initilise ensB avec des valeurs saisies par l’utilisateur }
+		function buildEnsB():void;
+			var
+				x int;
+			begin
+				read x;
+				while(!(x=0)) do
+					add x to ensB;
+					read x;
+				od;
+			end ;
+
+		{ Définition complète de equals }
+		function equals():bool;
+			var
+				tmpA iset;
+				tmpB iset;
+				a int;
+				b int;
+				equal bool;
+			begin
+
+				equal:= #ensA = #ensB ;
+				{ Vérifier que les élements sont les mêmes }
+				while(equal && 0 < #ensA && 0 < #ensB ) do
+					a := min ensA;
+					b := min ensB;
+					equal:=(a=b);
+					if(equal) then
+						add a to tmpA;
+						add b to tmpB;
+						remove a from ensA;
+						remove b from ensB;
+					fi;
+				od;
+				{ Remettre les ensembles dans leur état d’origine }
+				{while ( 0 < #tmpA && 0 < #tmpB) do
+					a := min tmpA;
+					b := min tmpB;
+					add a to ensA;
+					add b to ensB;
+					remove a from tmpA;
+					remove b from tmpB;
+				od ;}
+				return equal;
+			end;
+
+			ens1 iset;
+			ens2 iset;
+
+	begin
+		buildEnsA();
+		buildEnsB();
+		if(equals()) then
+			write 1;
+		else
+			write 0;
+		fi;
+	end;
+
+end;

@@ -1,0 +1,41 @@
+program LSD12;
+
+function main(): void;
+var 
+
+	f int;
+
+	function facto( l : bool ) : int ;
+		 var
+			y int;
+
+		 	function facto( x : int ) : int ;
+			var
+				test int;
+
+				
+
+			
+				begin
+					
+					if ( x = 0 ) then
+					   return 1;
+					else
+			   		   return x * facto(x-1);
+					fi;
+			
+			end;
+
+		begin
+			y := facto(4);
+			write y;
+			return y;
+		end;
+
+
+begin
+
+	f := facto(true);
+	
+end;
+end;

@@ -1,0 +1,314 @@
+program LSD12; 
+{ Case 2 : où sont géré :
+	- fonctions sans paramètres,
+	- pas de fonctions récursives 
+	- ni imbriquées }
+function main(): void; { TJ VOID }
+	var 
+		resultBoolTrue bool;
+		resultBoolFalse bool;
+		resultInt1 int;
+		resultInt2 int;
+		resultInt3 int;
+		
+		val1 int;
+		val2 int;
+		
+		val3 bool;
+		val4 bool;
+		
+		{ return "true" }
+		function returnTest1() : bool;
+			var
+				retour bool;
+			begin
+				retour := true;
+				return retour;
+			end;
+		
+		{ return "void" }
+		function returnTest2() : void;
+			var
+			begin
+			end;
+		
+		{ return "true" }
+		function returnTest3() : bool;
+			var
+			begin
+				return true;
+			end;
+		
+		{ return "2" }
+		function returnInt() : int;
+			var
+				a int;
+				b int;
+			begin
+				a := 1;
+				b := 1;
+				
+				if (a = 1) then
+					b := 2;
+				fi;
+				
+				return b;
+			end;
+		
+		{ return "9" }
+		function returnInt2() : int;
+			var
+				a int;
+				b int;
+			begin
+				a := 1;
+				b := 4;
+				
+				while ( a <= b) do
+					a := a + b;
+				od;
+
+				
+				return a+b;
+			end;
+		
+		{ return "8" }
+		function returnInt3() : int;
+			var
+				a int;
+				b int;
+			begin
+				a := 1;
+				b := 4;
+				
+				while ( a <= b) do
+					a := a + 3;
+					if (a = 4) then
+						a := a + b;
+					fi;
+				od;
+				
+				return a;
+			end;
+		
+		{ return "42" }
+		function returnInt4() : int;
+			var
+			begin
+				return 42;
+			end;
+		
+		{ return "2" }
+		function returnInt5() : int;
+			var
+				test int;
+			begin
+				test := 2;
+				if ( test = 1) then
+					while (test <= 5) do
+						test := test + 2;
+					od;
+				fi;
+				
+				return test;
+			end;
+			
+		{ return "6" }
+		function returnInt6() : int;
+			var
+				test int;
+			begin
+				test := 2;
+				if ( test = 2) then
+					while (test <= 5) do
+						test := test + 2;
+					od;
+				fi;
+				
+				return test;
+			end;
+			
+		{ affiche "69"	}
+		function fct0() : void;
+			var
+				lol int;
+			begin
+				lol := 69;
+				write lol;
+			end;
+	 
+		{ return "2" }
+		function fct1() : int;
+			var
+				lol int;
+			begin
+				lol := 2;
+				return lol;
+			end;
+		
+		{ return "true" }
+		function fct2() : bool;
+			var
+				lol bool;
+			begin
+				lol := false;
+				return lol;
+			end;
+
+		{ affiche "120" }
+		function fct3() : int;
+			var
+				testInt int;
+				testBool bool;
+				result int;
+			begin
+				testInt := 5;
+				testBool := true;
+				while ( testInt < 99 ) do
+					if ( testBool ) then
+						testInt := testInt * 5;
+					fi;
+				od;
+				
+				write testInt;
+				testBool := false;
+				if ( testBool ) then
+				else
+					while ( testInt = 125 ) do
+						testInt := testInt - 5;
+					od;
+				fi;
+				write testInt + 1;
+				result := testInt;
+				
+				return result - 1;
+			end;
+			
+		{ affiche "6998"	}
+		function fct4() : void;
+			var
+			begin
+				write 6998;
+			end;
+	 
+		{ return "2" }
+		function fct5() : int;
+			var
+			begin
+				return 2;
+			end;
+			
+		{ return "true" }
+		function fct6() : bool;
+			var
+			begin
+				return false;
+			end;
+		
+		{ utilise les variables globales
+		  affiche "152" }
+		function fct7() : void;
+			var
+				tmp int;
+			begin
+				val1 := 77;
+				val2 := 66;
+
+				if (val3) then
+					if (val2 < val1) then
+						tmp := val2;
+						val2 := val1;
+						val1:= tmp;
+					fi;
+				fi;
+				
+				if (val4) then
+					tmp := val1 + val2 + 9;
+				fi;
+				
+				val4 := false;
+				
+				write tmp;
+			end;
+		
+	begin
+		returnTest2();
+		resultBoolTrue := returnTest1();
+		resultInt3 := returnInt3();
+		
+		{ affiche "2" }
+		write returnInt();
+		
+		{ affiche "9" }
+		write returnInt2();
+		
+		{ affiche "8" }
+		write resultInt3;
+		
+		{ affiche "true" }
+		if (returnTest3()) then
+			write 1;
+		else
+			write 0;
+		fi;
+		
+		{ affiche "42" }
+		write returnInt4();
+		
+		{ affiche "2" }
+		write returnInt5();
+		
+		{ affiche "6" }
+		write returnInt6();
+		
+		{ affiche "69" }
+		fct0();
+		
+		{ affiche "152"  et tests variables globales}
+		val3 := true;
+		val4 := true;
+		fct7();
+		if (val3) then
+			{ affiche "66"}
+			write val1;
+		fi;
+		if (val4) then
+			write 1;
+		else
+			{ affiche "77"}
+			write val2;
+		fi;
+		
+		{ affiche "2" }
+		write fct1();
+		
+		{ affiche "false" }
+		if (fct2()) then
+			write 1;
+		else
+			write 0;
+		fi;
+		
+		write 88888888;
+		
+		{ affiche "119" }
+		write fct3();
+		
+		write 88888888;
+		
+		{ affiche "6998" }
+		fct4();
+		
+		{ affiche "2" }
+		write fct5();
+		
+		{ affiche "false" }
+		if (fct6()) then
+			write 1;
+		else
+			write 0;
+		fi;
+		
+	end;
+
+end;
