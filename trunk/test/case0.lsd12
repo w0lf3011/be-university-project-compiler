@@ -1,0 +1,53 @@
+program LSD12; 
+{ Case 0 : où sont géré :
+	- déclarations d'entiers et de booleans
+	- affections,
+	- lectures et affichages,
+	- opérations sur les entiers et les booleans }
+function main(): void; { TJ VOID }
+	var 
+		num1 int;
+		num2 int;
+		
+		addition int;
+		soustration int;
+		multiplication int;
+		division int;
+		
+		testRead int;
+		testWrite int;
+		
+		bool1 bool;
+		bool2 bool;
+
+	begin
+
+		num1 := 1;
+		num2 := 2;
+		
+		addition := num1 + num2;
+		soustration := addition - num1;
+		multiplication := addition * num2;
+		division := multiplication / num2;
+		
+		read testRead;
+		
+		testWrite := num1 + num2;
+		
+		write testWrite;
+		
+		bool1 := true;
+		bool2 := false;
+
+		bool2 := !bool2;
+		
+		write addition;
+		write soustration;
+		write multiplication;
+		write division;
+		
+		
+
+	end;
+
+end;

@@ -1,0 +1,26 @@
+program LSD12;
+
+function main(): void;
+var 
+
+	x int;
+	y int;
+	z bool;
+
+	function addTo( a : int, b : int ) : int;
+		var
+		begin	
+		end;
+
+		
+
+begin
+	x := 2;
+	y := 10;
+	z := true;
+	y := addTo( x, y, z );
+	write x;
+	write y;
+end;
+
+end;

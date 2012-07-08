@@ -1,0 +1,136 @@
+program LSD12; 
+{ Case 3 : où sont géré :
+	- fonction imbriquées avec paramètres,
+	- mais sans récursives }
+function main(): void; { TJ VOID }
+	var
+		globalInt int;
+			
+		{ return "true" }
+		function fct6() : bool;
+			var
+			begin
+				globalInt := globalInt + 1;
+				return false;
+			end;
+		
+		{ argument : test1 int;
+		  affiche test1 }
+		function fct7(var test1 : int) : void;
+			var
+			begin
+				globalInt := globalInt + 1;
+				write test1;
+			end;
+		
+		{ argument : test1 int;
+		  affiche "1" si true, "0" si false }
+		function fct8(var test1 : bool) : void;
+			var
+			begin
+				if (test1) then
+					write 1;
+				else
+					write 0;
+				fi;
+				
+				globalInt := globalInt + 1;
+			end;
+		
+		{ 2 int arguments
+		  affiche la somme de test1 et de test2 }
+		function fct9 (var test1 : int, test2 : int) : void;
+			var
+			begin
+				write test1 + test2;
+			end;
+			
+		{ 2 bool arguments
+		  affiche "1" si true, true et "0" dans les autres cas}
+		function fct10 (var test1 : bool, test2 : bool) : void;
+			var
+			begin
+				if (test1) then
+					if (test2) then
+						write 1;
+					else
+						write 0;
+					fi;
+				else
+					write 0;
+				fi;
+			end;
+		
+		{ 2 arguments de types différents
+		  affiche test1 si test2 est true }
+		function fct11 (var test1 : int, test2 : bool) : void;
+			var
+			begin
+				if (test2) then
+					write test1;
+				else
+					write 0;
+				fi;
+			end;
+		
+		{ test de fonction imbriquee
+		  affiche "5", "1" }
+		function fctImbriquer() : void;
+			var
+				int1 int;
+				int2 int;
+				
+				function fct01() : int;
+					var
+					begin
+						globalInt := globalInt + 1;
+						return int1;
+					end;
+				
+				function fct02() : bool;
+					var
+					begin
+						globalInt := globalInt + 1;
+						if (int1 = int2) then
+							return true;
+						else
+							return false;
+						fi;
+					end;
+			begin
+				int1 := 5;
+				int2 := 5;
+				
+				write fct01();
+				if (fct02()) then
+					write 1;
+				else
+					write 0;
+				fi;
+				
+				globalInt := globalInt + 1;
+			end;
+	begin
+		globalInt :=0;
+		
+		{ affiche "false" }
+		if (fct6()) then
+			write 1;
+		else
+			write 0;
+		fi;
+		
+		{ affiche "18" }
+		fct7(18);
+
+		{ affiche "1" si true, "0" si false}
+		fct8(true);
+		
+		{ test de fonction imbriquee
+		  affiche "5", "1" }
+		fctImbriquer();
+		
+		write globalInt;
+	end;
+
+end;

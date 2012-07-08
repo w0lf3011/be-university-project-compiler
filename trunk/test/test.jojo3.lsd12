@@ -1,0 +1,73 @@
+program LSD12; 
+{ Case 3 : où sont géré :
+	- fonction imbriquées avec paramètres,
+	- mais sans récursives }
+function main(): void; { TJ VOID }
+	var
+		globalInt int;
+		
+		{ argument : test1 int;
+		  affiche test1 }
+		function fct7(test1 : int) : void;
+			var
+			begin
+				globalInt := globalInt + 1;
+				write test1;
+			end;
+
+		{ test de fonction imbriquee
+		  affiche "5", "1" }
+		function fctImbriquer() : void;
+			var
+				int1 int;
+				int2 int;
+				
+				function fct01() : int;
+					var
+					begin
+						globalInt := globalInt + 1;
+						return int1;
+					end;
+				
+				function fct02() : bool;
+					var
+					begin
+						globalInt := globalInt + 1;
+						if (int1 = int2) then
+							return true;
+						else
+							return false;
+						fi;
+					end;
+			begin
+				int1 := 5;
+				int2 := 5;
+				
+				write fct01();
+				if (fct02()) then
+					write 1;
+				else
+					write 0;
+				fi;
+				
+				globalInt := globalInt + 1;
+			end;
+		
+		
+	begin
+		globalInt :=0;
+		
+		
+		{ affiche "18" }
+		fct7(18);
+
+		{ test de fonction imbriquee
+		  affiche "5", "1" }
+		fctImbriquer();
+		
+		write globalInt;
+
+		
+	end;
+
+end;

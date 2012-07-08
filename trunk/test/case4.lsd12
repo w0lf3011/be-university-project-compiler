@@ -1,0 +1,49 @@
+program LSD12; 
+{ Case 4 : où sont géré :
+	- fonctions récursives et imbriquées avec paramètres entiers et booléens }
+function main(): void; { TJ VOID }
+	var
+
+		x int;
+		e bool;
+
+
+		function addTo( var x : int, y : bool ) : bool;
+		var
+			result bool;
+		begin
+			result := true;
+
+			fctRecurcive(x,1);
+
+			return result;
+			
+		end;
+
+		function fctRecurcive(var pNum : int, cNum : int) : void;
+			var
+				tmp int;
+				k bool;
+			begin
+				write cNum;
+				
+				tmp := cNum;
+				cNum := cNum + pNum;
+				pNum := tmp;
+				
+				if (cNum < 10) then
+					fctRecurcive(pNum, cNum);
+				fi;
+
+	
+			end;
+	begin		
+
+		x := 0;
+		
+		e := addTo(x,true);
+		
+
+	end;
+
+end;

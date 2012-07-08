@@ -1,0 +1,116 @@
+program LSD12; 
+{ Case 5 : où sont géré :
+	- surcharge de fonctions et déclaration forward }
+function main(): void; { TJ VOID }
+	var 
+		function fct1() : int;
+			var
+			begin
+				return 2;
+			end;
+			
+		function fct1( var number : int) : int;
+			var
+			begin
+				return 2 + number;
+			end;
+			
+		function fct1( var number : int, number1 : int) : int;
+			var
+			begin
+				return 2 + number + number1;
+			end;
+			
+		function fct2() : int;
+			forward;
+		
+		function fct2( var num : int) : int;
+			forward;
+		
+		function fct2( var num : int, num1 : int) : int;
+			forward;
+		
+		function fct2() : int;
+			var
+			begin
+				return 2;
+			end;
+		
+		function fct2( var num : int) : int;
+			var
+			begin
+				return 2 + num;
+			end;
+		
+		function fct2( var num : int, num1 : int) : int;
+			var
+			begin
+				return 2 + num + num1;
+			end;
+			
+		function fct3() : void;
+			var
+				function fct1() : bool;
+					forward;
+				
+				function fct1(var val : bool) : bool;
+					forward;
+				
+				function fct02() : int;
+					forward;
+				
+				function fct2(var val : int) : int;
+					forward;
+					
+				function fct1() : bool;
+					var
+					begin
+						return true;
+					end;
+				
+				function fct1(var val : bool) : bool;
+					var
+					begin
+						return val;
+					end;
+				
+				function fct2() : int;
+					var
+					begin
+						return 2;
+					end;
+				
+				function fct2(var val : int) : int;
+					var
+					begin
+						return val;
+					end;
+			begin
+				if (fct01()) then
+					write 1;
+				else
+					write 0;
+				fi;
+				
+				if (fct02()) then
+					write 1;
+				else
+					write 0;
+				fi;
+			
+				write fct02();
+				write fct02(5);
+			end;
+	begin
+		write fct1();
+		write fct1(5);
+		write fct1(5, 9);
+		
+		write fct2();
+		write fct2(5);
+		write fct2(5, 9);
+		
+		fct3();
+	end;
+
+end;
